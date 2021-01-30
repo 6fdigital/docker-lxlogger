@@ -13,24 +13,24 @@ To start the container run:
 
 ```sh
 docker run -d \
-  --name lxlogger-docker \
+  --name lxlogger \
   -p 3003:3003 \
   -p 8086:8086 \
   -v /path/for/influxdb:/var/lib/influxdb \
   -v /path/for/grafana:/var/lib/grafana \
-  6fdigital/lxlogger-docker-combined:latest
+  6fdigital/docker-lxlogger:latest
 ```
 
 To stop the container launch:
 
 ```sh
-docker stop docker-influxdb-grafana
+docker stop lxlogger
 ```
 
 To start the container again launch:
 
 ```sh
-docker start docker-influxdb-grafana
+docker start lxlogger
 ```
 
 ## Mapped Ports
@@ -39,7 +39,6 @@ docker start docker-influxdb-grafana
 Host		Container		Service
 
 3003		3003			grafana
-3004		8083			chronograf
 8086		8086			influxdb
 ```
 ## SSH
