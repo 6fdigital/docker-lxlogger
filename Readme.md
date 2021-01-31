@@ -16,11 +16,13 @@ docker run -d \
   --name lxlogger \
   -p 3003:3003 \
   -p 8086:8086 \
-  -v /path/for/influxdb:/var/lib/influxdb \
-  -v /path/for/grafana:/var/lib/grafana \
-  -v /path/for/lxlogger:/usr/bin \
+  -v $(pwd)/influxdb/:/var/lib/influxdb
+  -v $(pwd)/grafana/:/var/lib/grafana \
+  --mount type=bind,source="$(pwd)"/lxlogger/,target=/usr/lib/lxlogger \
   6fdigital/docker-lxlogger:latest
 ```
+
+
 
 To stop the container launch:
 
