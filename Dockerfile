@@ -65,9 +65,6 @@ COPY influxdb/influxdb.conf /etc/influxdb/influxdb.conf
 # Configure Grafana
 COPY grafana/grafana.ini /etc/grafana/grafana.ini
 
-# Configure LxLogger
-# COPY lxlogger/.lxlogger.toml /usr/lib/lxlogger/.lxlogger.toml
-
 COPY run.sh /run.sh
 RUN ["chmod", "+x", "/run.sh"]
 CMD ["/run.sh"]
