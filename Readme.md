@@ -16,24 +16,22 @@ docker run -d \
   --name lxlogger \
   -p 3003:3003 \
   -p 8086:8086 \
-  -v $(pwd)/influxdb/:/var/lib/influxdb
-  -v $(pwd)/grafana/:/var/lib/grafana \
-  --mount type=bind,source="$(pwd)"/lxlogger/,target=/usr/lib/lxlogger \
+  -v <path-to-influx-folder>/influxdb/:/var/lib/influxdb \
+  -v <path-to-grafana-folder>/grafana/:/var/lib/grafana \
+  -v <path-to-lxlogger-folder>/lxlogger/:/usr/lib/lxlogger \
   6fdigital/docker-lxlogger:latest
 ```
 
-
-
-To stop the container launch:
-
+To control the state of the container run:
 ```sh
+# stop container
 docker stop lxlogger
-```
 
-To start the container again launch:
-
-```sh
+# start container
 docker start lxlogger
+
+# restart container
+docker restart lxlogger
 ```
 
 ## Mapped Ports
@@ -47,7 +45,7 @@ Host		Container		Service
 ## SSH
 
 ```sh
-docker exec -it <CONTAINER_ID> bash
+docker exec -it lxlogger bash
 ```
 
 ## Grafana
