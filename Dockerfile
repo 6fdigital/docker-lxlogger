@@ -14,6 +14,9 @@ COPY system/99fixbadproxy /etc/apt/apt.conf.d/99fixbadproxy
 
 WORKDIR /root
 
+EXPOSE 8086
+EXPOSE 3003
+
 # Clear previous sources
 RUN ARCH= && dpkgArch="$(dpkg --print-architecture)" && \
     case "${dpkgArch##*-}" in \
