@@ -6,7 +6,7 @@ ENV LANG C.UTF-8
 
 # Default versions
 ENV INFLUXDB_VERSION=1.8.3
-ENV GRAFANA_VERSION=7.3.7
+ENV GRAFANA_VERSION=9.3.2
 
 # Grafana database type
 ENV GF_DATABASE_TYPE=sqlite3
