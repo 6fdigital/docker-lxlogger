@@ -1,11 +1,11 @@
-FROM debian:stretch-slim
+FROM arm64v8/debian:stable
 LABEL maintainer="Marco Kernler <marco.kernler@6f.digital>"
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV LANG C.UTF-8
 
 # Default versions
-ENV INFLUXDB_VERSION=1.8.3
+ENV INFLUXDB_VERSION=1.8.10
 ENV GRAFANA_VERSION=9.3.2
 
 # Grafana database type

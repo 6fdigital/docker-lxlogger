@@ -1,15 +1,41 @@
 # Docker Image for LxLogger
 
-The image contains the following components:
+A docker image to run LxLogger with InfluxDB and Grafana. The image are based on 
+arm64/debian and was testet on the following host systems:
 
-| Description  | Value   |
-|--------------|---------|
-| InfluxDB     | 1.8.3   |
-| Grafana      | 7.3.7   |
+* [x] MacOS
+* [x] Windows 11
+* [x] Raspberry Pi 4
+
+
+| Description  | Value  |
+|--------------|--------|
+| InfluxDB     | 1.8.10 |
+| Grafana      | 9.3.2  |
 
 ## Quick Start
 
-To start the container run:
+To use this image, you need to have Docker installed on your system. You can find the
+installation instructions [here](https://docs.docker.com/get-docker/). Also, you need
+a valid lxlogger download from our [shop](https://www.lxlogger.de/), which contains
+the `lxlogger` binary. This will work with all available editions of LxLogger.
+
+Create the following folders on your docker host system. We need a `influxdb`, `grafana` and
+`lxlogger` folder:
+
+* ~/docker/lxlogger/influxdb
+* ~/docker/lxlogger/grafana
+* ~/docker/lxlogger/lxlogger
+
+Download a 
+
+Then unzip the lxlogger download (lxlogger_[edtion]_linux_arm.zip) and copy
+the `lxlogger` binary to the created `~/docker/lxlogger/lxlogger` folder.
+
+
+
+Now you're ready to start the docker container. Open a terminal and execute the following
+command (be sure to replace the folder path's with your own):
 
 ```sh
 docker run -d \
@@ -22,6 +48,10 @@ docker run -d \
   6fdigital/docker-lxlogger:latest
 ```
 
+
+
+Create
+
 To control the state of the container run:
 ```sh
 # stop container
@@ -32,20 +62,18 @@ docker start lxlogger
 
 # restart container
 docker restart lxlogger
+
+# open terminal in container
+docker exec -it lxlogger bash
 ```
 
-## Mapped Ports
+## Ports
 
 ```
 Host		Container		Service
 
 3003		3003			grafana
 8086		8086			influxdb
-```
-## SSH
-
-```sh
-docker exec -it lxlogger bash
 ```
 
 ## Grafana
