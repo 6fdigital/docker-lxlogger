@@ -17,6 +17,21 @@ InfluxDB and Grafana are included in the following versions:
 | InfluxDB     | 1.8.10 |
 | Grafana      | 9.3.2  |
 
+## Image variants
+The lxlogger images are available in multiple variants.
+
+### 6fdigital/lxlogger:latest
+This image uses the FROM debian:stretch-slim based lxlogger image.
+```bash
+docker pull 6fdigital/lxlogger:latest
+```
+
+### 6fdigital/lxlogger:arm64v8
+This image uses the arm64v8/debian:stable based lxlogger image.
+```bash
+docker pull 6fdigital/lxlogger:arm64v8
+```
+
 ## Quick Start
 
 To use this image, you need to have Docker installed on your system. You can find the
@@ -113,3 +128,12 @@ Port: 8086
 
 1. Establish a ssh connection with the container
 2. Launch `influx` to open InfluxDB Shell (CLI)
+
+## Development
+### Build
+```sh
+# lastest
+docker build -f Dockerfile -t 6fdigital/docker-lxlogger:latest .
+# arm64v8
+docker build -f Dockerfile.arm64v8 -t 6fdigital/docker-lxlogger:arm64v8 .
+```
