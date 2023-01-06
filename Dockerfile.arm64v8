@@ -1,4 +1,4 @@
-FROM arm64v8/debian:stable
+FROM arm64v8/debian:stable-slim
 LABEL maintainer="Marco Kernler <marco.kernler@6f.digital>"
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -42,7 +42,7 @@ RUN ARCH= && dpkgArch="$(dpkg --print-architecture)" && \
         supervisor \
         wget \
         gnupg \
-    && curl -sL https://deb.nodesource.com/setup_10.x | bash - \
+    && curl -sL https://deb.nodesource.com/setup_18.x | bash - \
     && apt-get install -y nodejs \
     && mkdir -p /var/log/supervisor \
     && rm -rf .profile \
