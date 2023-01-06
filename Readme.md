@@ -34,13 +34,14 @@ docker pull 6fdigital/lxlogger:arm64v8
 
 ## Quick Start
 
-To use this image, you need to have Docker installed on your system. You can find the
-installation instructions [here](https://docs.docker.com/get-docker/). Also, you need
-a valid lxlogger download from our shop [here](https://www.lxlogger.de/) which contains
-the `lxlogger` binary. This will work with all available editions of LxLogger.
+To use this image, you need to have Docker installed on your system. You can 
+find the installation instructions [here](https://docs.docker.com/get-docker/).
+Also, you need a valid lxlogger download from our shop 
+[here](https://www.lxlogger.de/) which contains the `lxlogger` binary. This will
+work with all available editions of LxLogger.
 
-Create the following folders on your docker host system. We need a `influxdb`, `grafana` and
-`lxlogger` folder:
+Create the following folders on your docker host system. We need a `influxdb`, 
+`grafana` and `lxlogger` folder:
 
 * ~/docker/lxlogger/lxlogger
 * ~/docker/lxlogger/influxdb
@@ -48,14 +49,15 @@ Create the following folders on your docker host system. We need a `influxdb`, `
 
 Download a copy of the lxlogger- configuration template 
 ([.lxlogger.toml](https://github.com/6fdigital/docker-lxlogger/blob/master/lxlogger/.lxlogger.toml))
-file and save it to the `~/docker/lxlogger/lxlogger` folder. Open the file and provide the Hostname of 
-your Loxone® Miniserver and a valid username and password.
+file and save it to the `~/docker/lxlogger/lxlogger` folder. Open the file and 
+provide the Hostname of your Loxone® Miniserver and a valid username and 
+password.
 
-Then unzip the lxlogger download (lxlogger_[edtion]_linux_arm.zip) and copy
-the `lxlogger` binary to your `~/docker/lxlogger/lxlogger` folder.
+Then unzip the lxlogger download (lxlogger_[edtion]_linux_arm.zip) and copy the
+`lxlogger` binary to your `~/docker/lxlogger/lxlogger` folder.
 
-Now you're ready to start the docker container. Open a terminal and execute the following
-command (be sure to replace the folder path's with your own):
+Now you're ready to start the docker container. Open a terminal and execute the
+following command (be sure to replace the folder path's with your own):
 
 ```sh
 docker run -d \
@@ -114,7 +116,8 @@ Password: root
 
 Basic auth and credentials must be left unflagged. Proxy is not required.
 
-Now you are ready to add your first dashboard and launch some queries on a database.
+Now you are ready to add your first dashboard and launch some queries on a
+database.
 
 ### InfluxDB
 
@@ -132,8 +135,8 @@ Port: 8086
 ## Development
 ### Build
 ```sh
-# lastest
+# tag: lastest (amd64)
 docker build -f Dockerfile -t 6fdigital/docker-lxlogger:latest .
-# arm64v8
+# tag: arm64v8
 docker build -f Dockerfile.arm64v8 -t 6fdigital/docker-lxlogger:arm64v8 .
 ```
