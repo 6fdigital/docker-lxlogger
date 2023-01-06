@@ -1,4 +1,4 @@
-FROM debian:stable-slim
+FROM arm64v8/debian:stable-slim
 LABEL maintainer="Marco Kernler <marco.kernler@6f.digital>"
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -25,8 +25,8 @@ RUN ARCH= && dpkgArch="$(dpkg --print-architecture)" && \
       armhf) ARCH='armhf';; \
       armel) ARCH='armel';; \
       *)     echo "Unsupported architecture: ${dpkgArch}"; exit 1;; \
-    esac \
-    && rm /var/lib/apt/lists/* -vf \
+    esac && \
+    rm /var/lib/apt/lists/* -vf \
     # Base dependencies
     && apt-get -y update \
     && apt-get -y dist-upgrade \
@@ -71,4 +71,3 @@ COPY grafana/grafana.ini /etc/grafana/grafana.ini
 COPY run.sh /run.sh
 RUN ["chmod", "+x", "/run.sh"]
 CMD ["/run.sh"]
-
