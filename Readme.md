@@ -138,7 +138,7 @@ docker buildx create --name <my-builder> --use
 ### Build
 ```sh
 # build
-docker buildx build --platform=linux/amd64,linux/arm/v8 .
+docker buildx build --platform=linux/amd64,linux/arm64 .
 # build and push
-docker buildx build --platform=linux/amd64,linux/arm/v8 -t 6fdigital/docker-lxlogger:latest --push .
+docker buildx build --platform=linux/amd64,linux/arm64 -t 6fdigital/docker-lxlogger:latest --push .
 ```
