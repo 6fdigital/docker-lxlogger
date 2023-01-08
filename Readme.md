@@ -88,7 +88,7 @@ docker exec -w /usr/lib/lxlogger -it <container-name> /bin/bash
 ```
 
 For more information about the available lxlogger commands, please visit our
-support website [here](https://www.lxlogger.de/support/).
+support website [here](https://support.lxlogger.de/docs/index/).
 
 ### Grafana
 
