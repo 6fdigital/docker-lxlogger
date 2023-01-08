@@ -1,6 +1,6 @@
-# Monolithic Docker Image for LxLogger
+# Docker Image for LxLogger
 
-A monolithic LxLogger docker image containing InfluxDB and Grafana in the 
+A LxLogger docker image containing InfluxDB and Grafana in the 
 following versions:
 
 | Description  | Value  |
