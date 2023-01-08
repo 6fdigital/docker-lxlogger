@@ -64,15 +64,31 @@ docker exec -it lxlogger bash
 ```
 
 ## Details
+### LxLogger
 
-### Ports
+You're able to open a ssh connection to the docker container to get access to
+the lxlogger binary. This gives you the ability to run the different available 
+lxlogger commands.
 
+```sh
+# get the name of your container
+docker ps
+# open a new terminal within the lxlogger folder
+docker exec -w /usr/lib/lxlogger -it <container-name> /bin/bash
+
+# Now you're inside the lxlogger folder
+# of you're lxlogger container:
+#
+# check your lxlogger configuration file options
+./lxlogger config check
+# import statistic data
+./lxlogger import -y 2022 -m 12
+# get info
+./lxlogger info
 ```
-Host		Container		Service
 
-3003		3003			grafana
-8086		8086			influxdb
-```
+For more information about the available lxlogger commands, please visit our
+support website [here](https://www.lxlogger.de/support/).
 
 ### Grafana
 
@@ -83,7 +99,7 @@ Username: root
 Password: root
 ```
 
-#### Add data source on Grafana
+#### Add data source in Grafana
 
 1. Using the wizard click on `Add data source`
 2. Choose a `name` for the source and flag it as `Default`
@@ -106,7 +122,7 @@ Port: 8086
 
 #### InfluxDB Shell (CLI)
 
-1. Establish a ssh connection with the container
+1. Establish a ssh connection with the container (see in LxLogger section)
 2. Launch `influx` to open InfluxDB Shell (CLI)
 
 ## Development
