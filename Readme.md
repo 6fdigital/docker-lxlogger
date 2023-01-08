@@ -110,6 +110,15 @@ Port: 8086
 2. Launch `influx` to open InfluxDB Shell (CLI)
 
 ## Development
+
+## Pre-requisites
+
+```sh
+# create a new builder for getting access to the docker 
+# buildx command (new multi-architecture features) and 
+# to use the builder for further builds
+docker buildx create --name <my-builder> --use
+```
 ### Build
 ```sh
 # build
