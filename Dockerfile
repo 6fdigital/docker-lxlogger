@@ -1,18 +1,21 @@
-FROM debian:stretch-slim
+FROM debian:stable-slim
 LABEL maintainer="Marco Kernler <marco.kernler@6f.digital>"
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV LANG C.UTF-8
 
 # Default versions
-ENV INFLUXDB_VERSION=1.8.3
-ENV GRAFANA_VERSION=7.3.7
+ENV INFLUXDB_VERSION=1.8.10
+ENV GRAFANA_VERSION=9.3.2
 
 # Grafana database type
 ENV GF_DATABASE_TYPE=sqlite3
 COPY system/99fixbadproxy /etc/apt/apt.conf.d/99fixbadproxy
 
 WORKDIR /root
+
+EXPOSE 8086
+EXPOSE 3003
 
 # Clear previous sources
 RUN ARCH= && dpkgArch="$(dpkg --print-architecture)" && \
@@ -22,8 +25,8 @@ RUN ARCH= && dpkgArch="$(dpkg --print-architecture)" && \
       armhf) ARCH='armhf';; \
       armel) ARCH='armel';; \
       *)     echo "Unsupported architecture: ${dpkgArch}"; exit 1;; \
-    esac && \
-    rm /var/lib/apt/lists/* -vf \
+    esac \
+    && rm /var/lib/apt/lists/* -vf \
     # Base dependencies
     && apt-get -y update \
     && apt-get -y dist-upgrade \
@@ -39,7 +42,7 @@ RUN ARCH= && dpkgArch="$(dpkg --print-architecture)" && \
         supervisor \
         wget \
         gnupg \
-    && curl -sL https://deb.nodesource.com/setup_10.x | bash - \
+    && curl -sL https://deb.nodesource.com/setup_18.x | bash - \
     && apt-get install -y nodejs \
     && mkdir -p /var/log/supervisor \
     && rm -rf .profile \
@@ -68,3 +71,4 @@ COPY grafana/grafana.ini /etc/grafana/grafana.ini
 COPY run.sh /run.sh
 RUN ["chmod", "+x", "/run.sh"]
 CMD ["/run.sh"]
+
