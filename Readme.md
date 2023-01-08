@@ -1,36 +1,12 @@
 # Docker Image for LxLogger
 
-A docker image to run LxLogger with InfluxDB and Grafana. The image are based on 
-arm64/debian and was testet on the following host systems:
-
-* [ ] Ubuntu
-* [ ] MacOS (Intel)
-* [x] MacOS (Apple Silicon)
-* [ ] Raspberry Pi 4
-* [ ] Synology Diskstation
-* [ ] Windows 11
-
-InfluxDB and Grafana are included in the following versions:
+A LxLogger docker image containing InfluxDB and Grafana in the 
+following versions:
 
 | Description  | Value  |
 |--------------|--------|
 | InfluxDB     | 1.8.10 |
 | Grafana      | 9.3.2  |
-
-## Image variants
-The lxlogger images are available in multiple variants.
-
-### 6fdigital/lxlogger:latest
-This image uses the FROM debian:stretch-slim based lxlogger image.
-```bash
-docker pull 6fdigital/lxlogger:latest
-```
-
-### 6fdigital/lxlogger:arm64v8
-This image uses the arm64v8/debian:stable based lxlogger image.
-```bash
-docker pull 6fdigital/lxlogger:arm64v8
-```
 
 ## Quick Start
 
@@ -53,8 +29,9 @@ file and save it to the `~/docker/lxlogger/lxlogger` folder. Open the file and
 provide the Hostname of your Loxone® Miniserver and a valid username and 
 password.
 
-Then unzip the lxlogger download (lxlogger_[edtion]_linux_arm.zip) and copy the
-`lxlogger` binary to your `~/docker/lxlogger/lxlogger` folder.
+Then unzip the lxlogger download (`lxlogger_<edtion>_linux_<arch>.zip`) and copy 
+the `lxlogger` binary to your `~/docker/lxlogger/lxlogger` folder. Keep in mind 
+to use the correct binary for your system architecture.
 
 Now you're ready to start the docker container. Open a terminal and execute the
 following command (be sure to replace the folder path's with your own):
@@ -135,8 +112,8 @@ Port: 8086
 ## Development
 ### Build
 ```sh
-# tag: lastest (amd64)
-docker build -f Dockerfile -t 6fdigital/docker-lxlogger:latest .
-# tag: arm64v8
-docker build -f Dockerfile.arm64v8 -t 6fdigital/docker-lxlogger:arm64v8 .
+# build
+docker buildx build --platform=linux/amd64,linux/arm/v8 .
+# build and push
+docker buildx build --platform=linux/amd64,linux/arm/v8 -t 6fdigital/docker-lxlogger:latest --push .
 ```
