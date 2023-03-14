@@ -95,8 +95,8 @@ support website [here](https://support.lxlogger.de/docs/index/).
 Open <http://localhost:3003>
 
 ```
-Username: root
-Password: root
+Username: admin
+Password: admin
 ```
 
 #### Add data source in Grafana
